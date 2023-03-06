@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>水果沙拉</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h3 id='鲜奶雪花酪制作'><span>鲜奶雪花酪制作</span></h3><h6 id='所需材料-1'><span>所需材料:</span></h6><ul><li><span>新西兰全脂奶粉200克</span></li><li><span>植脂末120克</span></li><li><span>白砂糖270克</span></li><li><span>纤维素20克麦芽糊精135克</span></li><li><span>香草精3克总水量2700克</span></li><li><span>开水700克凉水2000克</span></li></ul><h6 id='鲜奶酪制作细节'><span>鲜奶酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称270克白糖倒盆中倒入开水 700克 搅拌至白糖全部融化倒开水目的就是化糖</span></li><li><span>糖融化后 盆中倒入凉水或直饮水2000克然后倒入奶粉200克植脂末120克 搅拌至均匀化开即可</span></li><li><span>加入纤维素20克以及麦芽糊精135克再加入香草精3克增加香味香草精可加可不加哈)</span></li><li><span>全部加好之后 倒进破壁机里面打个30秒打好之后会有泡沫因为加的有奶粉属正常现象可用筛子把泡沫筛走不筛也行的哈</span></li><li><span>然后倒进保鲜盒里放冷冻室10-12个小时中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='抹茶绿豆酪制作'><span>抹茶绿豆酪制作</span></h3><h6 id='所需材料-2'><span>所需材料:</span></h6><ul><li><span>煮好的绿豆600克</span></li><li><span>新西兰全脂奶粉150克</span></li><li><span>植脂末150克白砂糖250克</span></li><li><span>纤维素5克麦芽糊精50克抹茶粉60克总水量2500克</span></li><li><span>开水500克凉水2000克</span></li></ul><h6 id='绿豆制作细节'><span>绿豆制作细节</span></h6><ol><li><span>绿豆浸泡:取一斤绿豆用凉水浸泡 夏季天热可放在冰箱冷藏室浸泡 防止绿豆变酸</span></li><li><span>绿豆焖煮:泡好的绿豆清洗好 加水莫过绿豆后 放在电饭锅煮熟即可 煮的过程中可以加点白醋目的是防止绿豆氧化变色</span></li><li><span>绿豆用量: 取煮好的绿豆600克备用 剩下可以放在冰箱冷冻保存 随用随取</span></li></ol><h6 id='绿豆酪制作细节'><span>绿豆酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称250克白糖 奶粉150克 植脂末150克倒盆中 倒入开水500克搅拌至砂糖植脂未全部化开</span></li><li><span>化开后 盆中倒入凉水或直饮水 2000克加入纤维素5克麦芽糊精50克 搅拌搅拌</span></li><li><span>加入抹茶粉60克调色 根据你想要的颜色加量 但也不要加太多 也可以不加抹茶粉 颜色不会那么绿 加了颜色就是好看一点</span></li><li><span>取称好的600克绿豆倒进破壁机里再把调好的汤底倒进去 打个30秒左右 打好之后会有泡沫因为加的有奶粉属正常现象可用筛子把泡沫筛走 不筛也行的哈</span></li><li><span>然后倒进保鲜盒里放冷冻室10-12个小时中间停2-3个小时用蛋抽搅拌一下 因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='蓝莓果肉酪制作'><span>蓝莓果肉酪制作</span></h3><h6 id='所需材料-3'><span>所需材料:</span></h6><ul><li><span>蓝莓果味粉100克新鲜蓝莓果肉100克</span></li><li><span>新西兰全脂奶粉100克</span></li><li><span>植脂末150克</span></li><li><span>白砂糖100-150克</span></li><li><span>纤维素6克</span></li><li><span>麦芽糊精60克</span></li><li><span>总水量3000克开水500克凉水2500克</span></li></ul><h6 id='蓝莓酪制作细节'><span>蓝莓酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称100-150克白糖(甜度可自己调节) 蓝莓果味粉100克奶粉100克 植脂末150克倒盆中 倒入开水500克搅拌至砂糖植脂未全部化开</span></li><li><span>化开后 盆中倒入凉水或直饮水2500克加入纤维素6克 麦芽糊精60克 搅拌搅拌</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒左右 打好之后倒入保鲜盒里</span></li><li><span>取新鲜蓝莓100克 果肉搞碎点之后 倒入汤底盒里面 冻好之后里面可以看到蓝莓果粒没有蓝莓用葡萄也行(果肉可加可不加)</span></li><li><span>搅拌好后放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='杨枝甘露酪制作'><span>杨枝甘露酪制作</span></h3><h6 id='所需材料-4'><span>所需材料:</span></h6><ul><li><span>杨枝甘露粉400克</span></li><li><span>新西兰全脂奶粉100克</span></li><li><span>植脂末150克</span></li><li><span>纤维素4克</span></li><li><span>麦芽糊精40克</span></li><li><span>总水量2100克</span></li><li><span>开水600克凉水1500克</span></li></ul><h6 id='杨枝甘露酪制作细节'><span>杨枝甘露酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称杨枝甘露粉400克奶粉100克植脂末150克倒盆中 倒入开水600克搅拌至奶粉植脂未全部化开</span></li><li><span>化开后 盆中倒入凉水或直饮水1500克再加入纤维素4克麦芽糊精40克 搅拌搅拌</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒左右 打好之后倒入保鲜盒里</span></li><li><span>把保鲜盒放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='芒果雪花酪制作'><span>芒果雪花酪制作</span></h3><h6 id='所需材料-5'><span>所需材料:</span></h6><ul><li><span>芒果果味粉 100克新西兰全脂奶粉100克植脂末150克</span></li><li><span>白砂糖100-150克</span></li><li><span>纤维素6克</span></li><li><span>麦芽糊精60克</span></li><li><span>总水量3000克开水500克凉水2500克</span></li></ul><h6 id='芒果酪制作细节'><span>芒果酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称芒果果味粉100克白砂糖100-150(甜度可自己适当调节)奶粉100克植脂末150克倒盆中 倒入开水500克 搅拌至砂糖奶粉类化开即可</span></li><li><span>化开后 盆中倒入凉水或直饮水 2500克再加入纤维素6克 麦芽糊精60克 搅拌搅拌</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒左右 打好之后倒入保鲜盒里</span></li><li><span>把保鲜盒放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='红豆雪花酪制作'><span>红豆雪花酪制作</span></h3><h6 id='所需材料-6'><span>所需材料:</span></h6><ul><li><span>红豆粉300克</span></li><li><span>新西兰全脂奶粉100克</span></li><li><span>植脂末150克</span></li><li><span>纤维素8克</span></li><li><span>麦芽糊精80克</span></li><li><span>总水量2400</span></li><li><span>开水400克凉水2000克</span></li></ul><h6 id='红豆酪制作细节'><span>红豆酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称红豆粉300克奶粉100克 植脂末150克倒盆中 倒入开水400克搅拌至奶粉植脂未全部化开</span></li><li><span>化开后 盆中倒入凉水或直饮水 2000克加入纤维素8克 麦芽糊精80克 搅拌搅拌</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒左右 打好之后倒入保鲜盒里</span></li><li><span>搅拌好后放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅挫个1-2次即可</span></li></ol><h3 id='草莓雪花酪制作'><span>草莓雪花酪制作</span></h3><h6 id='所需材料-7'><span>所需材料:</span></h6><ul><li><span>草莓硬冰淇淋粉400克</span></li><li><span>新西兰全脂奶粉100克</span></li><li><span>植脂末150克</span></li><li><span>奶酪100克</span></li><li><span>总水量2100克</span></li><li><span>开水600克 </span></li><li><span>凉水1500克</span></li></ul><h6 id='草莓酪制作细节'><span>草莓酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称草莓冰淇淋粉400克奶粉100克植脂末150克倒盆中 倒入开水600克 搅拌至奶粉植脂未全部化开</span></li><li><span>化开后 盆中倒入凉水或直饮水1500克搅拌搅拌 再加入100克奶酪 (也可不加哈)</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒左右 打好之后倒入保鲜盒里</span></li><li><span>搅拌好后放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下 因为加的有纤维素这些 搅拌个1-2次即可</span></li></ol><h3 id='椰乳雪花酪制作'><span>椰乳雪花酪制作</span></h3><h6 id='所需材料-8'><span>所需材料</span></h6><ul><li><span>航帆椰子粉500克</span></li><li><span>高达牌椰浆200克</span></li><li><span>植脂末150克</span></li><li><span>纤维素5克</span></li><li><span>麦芽糊精50克</span></li><li><span>总水量3200克</span></li><li><span>开水800克</span></li><li><span>凉水2400克</span></li></ul><h6 id='椰乳酪制作细节'><span>椰乳酪制作细节</span></h6><ol><li><span>准备个盆 用电子秤称椰子粉 500克(喜欢椰味浓可加200克椰浆 也可不加植脂末150克倒盆中 倒入开水 800克 搅拌至全部化开即可</span></li><li><span>化开后 盆中倒入凉水或直饮水 2400克再加入纤维素5克麦芽糊精50克搅拌搅拌</span></li><li><span>把调好的汤底倒进破壁机里 打个30秒方右 打好之后倒入保鲜盒里</span></li><li><span>把保鲜盒放冷冻室10-12个小时 中间停2-3个小时用蛋抽搅拌一下因为加的有纤维素这些 搅拌个1-2次即</span></li></ol><h3 id='口味搭配'><span>口味搭配</span></h3><ul><li><span>果酱有很多种:草莓芒果蓝莓 百香果巧克力青苹果等等 根据自己喜好什么选择</span></li><li><span>辅料:葡萄干花生碎椰果红豆爆爆珠黄油片 麻薯 绿豆椰蓉 脆脆豆 巧克力豆......也可搭配水果,西瓜等等...多去创新搭配哦</span></li><li><span>装杯: 杯子底部抹一层果酱 放入雪花酪再放入辅料再放一层雪花酪加小料 水果等多去演练装杯多学拍照</span></li></ul><h3 id='冰沙保存'><span>冰沙保存</span></h3><ul><li><span>冰沙可拿出来反复用反复冻</span></li><li><span>天气炎热情况下 观察冰沙状态取出的可保存3-10天</span></li><li><span>冷冻未取的可保存1个月</span></li><li><span>每天切记清理保温桶所有工具</span></li><li><span>加的有奶制品夏季易发酵注意卫生细节</span></li></ul><h3 id='注意'><span>注意</span></h3><ul><li><span>把调好的奶酪底放冰箱冷冻10-12个小时</span></li><li><span>中途2-3小时拿出来搅拌下最好温度零下10-15度最佳冻好的</span></li><li><span>雪花酪卖的时候提前拿出来一会化冻 然后装到保温桶里售卖</span></li><li><span>店面售卖的可随用随取</span></li></ul></div></div>
+</body>
+</html>
